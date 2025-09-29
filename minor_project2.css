@@ -1,0 +1,43 @@
+/* Custom styles on top of Bootstrap */
+body {
+    background-color: #a9cff5;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.list-group-item h5 {
+    color: #0d6efd;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 2px solid #0d6efd;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+#chart-container {
+    min-height: 400px;
+}
+
+footer {
+    margin-top: 2rem;
+}
