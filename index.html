@@ -139,6 +139,10 @@
         #past-data-table thead tr:first-child th:last-child {
           border: none;
         }
+          
+         #past-data-table thead td:last-child {
+          border: 2px solid #000;
+        }
         /* Add vertical lines between parameter groups in the tbody */
         /* Each parameter group has 2 columns; add border-right after every 2nd column starting after date */
         #past-data-table tbody td:nth-child(2n+1) {
@@ -146,7 +150,7 @@
         }
         /* Remove border on last td in tbody */
         #past-data-table tbody td:last-child {
-          border: 2px solid #000;
+          border: none;
         }
       </style>
       <table class="table table-striped" id="past-data-table">
