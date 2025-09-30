@@ -124,49 +124,68 @@
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-header">
-              <h2>Weekly Data</h2>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-striped" id="past-data-table">
-                  <thead>
-                    <tr>
-                      <th rowspan="2">Date</th>
-                      <th colspan="2">pH</th>
-                      <th colspan="2">BOD (mg/L)</th>
-                      <th colspan="2">COD (mg/L)</th>
-                      <th colspan="2">TSS (mg/L)</th>
-                      <th colspan="2">Turbidity (NTU)</th>
-                      <th colspan="2">Ammonia (NH3) (mg/L)</th>
-                      <th colspan="2">Dissolved Oxygen (mg/L)</th>
-                      <th colspan="2">Nutrients (mg/L)</th>
-                    </tr>
-                    <tr>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                      <th>Influent</th>
-                      <th>Effluent</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+       <div class="card mb-4">
+  <div class="card-header">
+    <h2>Weekly Data</h2>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <style>
+        /* Add vertical lines between parameter groups in the first header row */
+        #past-data-table thead tr:first-child th {
+          border-right: 2px solid #000;
+        }
+        /* Remove border on last header cell in first row */
+        #past-data-table thead tr:first-child th:last-child {
+          border-right: none;
+        }
+        /* Add vertical lines between parameter groups in the tbody */
+        /* Each parameter group has 2 columns; add border-right after every 2nd column starting after date */
+        #past-data-table tbody td:nth-child(2n+2) {
+          border-right: 2px solid #000;
+        }
+        /* Remove border on last td in tbody */
+        #past-data-table tbody td:last-child {
+          border-right: none;
+        }
+      </style>
+      <table class="table table-striped" id="past-data-table">
+        <thead>
+          <tr>
+            <th rowspan="2">Date</th>
+            <th colspan="2">pH</th>
+            <th colspan="2">BOD (mg/L)</th>
+            <th colspan="2">COD (mg/L)</th>
+            <th colspan="2">TSS (mg/L)</th>
+            <th colspan="2">Turbidity (NTU)</th>
+            <th colspan="2">Ammonia (NH3) (mg/L)</th>
+            <th colspan="2">Dissolved Oxygen (mg/L)</th>
+            <th colspan="2">Nutrients (mg/L)</th>
+          </tr>
+          <tr>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+            <th>Influent</th>
+            <th>Effluent</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
         <div class="card mb-4">
             <div class="card-header">
