@@ -17,7 +17,7 @@ body {
 }
 
 .list-group-item h5 {
-    color: #0d6efd;
+    color: #8a3cff;
 }
 
 .modal-header {
@@ -34,10 +34,28 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-#chart-container {
+.chart-container {
     min-height: 400px;
+    margin-bottom: 2rem;
 }
 
 footer {
     margin-top: 2rem;
+}
+
+/* Weekly Data Table Borders */
+#past-data-table {
+    border: 2px solid #a4c1de;
+    border-collapse: collapse;
+}
+
+#past-data-table th,
+#past-data-table td {
+    border: 1px solid #a4c1de;
+    padding: 8px;
+}
+
+#past-data-table thead th {
+    border: 1px solid #a4c1de;
+    background-color: #f8f9fa;
 }
