@@ -20,23 +20,23 @@ if (!localStorage.getItem('parametersHistory')) {
             date: date.toISOString().split('T')[0],
             influent: {
                 ph: (Math.random() * (8.5 - 6.5) + 6.5).toFixed(1),      // pH range: 6.5-8.5
-                bod: Math.floor(Math.random() * (350 - 250) + 250),      // BOD range: 250-350 mg/L
-                cod: Math.floor(Math.random() * (700 - 500) + 500),      // COD range: 500-700 mg/L
-                tss: Math.floor(Math.random() * (200 - 100) + 100),      // TSS range: 100-200 mg/L
                 turbidity: Math.floor(Math.random() * (120 - 80) + 80),  // Turbidity range: 80-120 NTU
-                nh3: Number((Math.random() * (50 - 20) + 20).toFixed(2)), // NH3 range: 20-50 mg/L
-                do: Number((Math.random() * (3 - 1) + 1).toFixed(2)),     // DO range: 1-3 mg/L
-                nutrients: Number((Math.random() * (30 - 10) + 10).toFixed(2)) // Nutrients range: 10-30 mg/L
+                tds: Math.floor(Math.random() * (600 - 400) + 400),       // TDS range: 400-600 mg/L
+                hardness: Number((Math.random() * (200 - 100) + 100).toFixed(2)), // Hardness range: 100-200 mg/L
+                chloride: Number((Math.random() * (300 - 150) + 150).toFixed(2)), // Chloride range: 150-300 mg/L
+                calcium: Number((Math.random() * (120 - 60) + 60).toFixed(2)),     // Calcium range: 60-120 mg/L
+                phosphorus: Number((Math.random() * (5 - 1) + 1).toFixed(2)),     // Phosphorus range: 1-5 mg/L
+                do: Number((Math.random() * (3 - 1) + 1).toFixed(2))              // DO range: 1-3 mg/L
             },
             effluent: {
                 ph: (Math.random() * (8.0 - 7.0) + 7.0).toFixed(1),      // pH range: 7.0-8.0
-                bod: Math.floor(Math.random() * (30 - 10) + 10),         // BOD range: 10-30 mg/L
-                cod: Math.floor(Math.random() * (100 - 50) + 50),        // COD range: 50-100 mg/L
-                tss: Math.floor(Math.random() * (30 - 5) + 5),           // TSS range: 5-30 mg/L
                 turbidity: Math.floor(Math.random() * (30 - 10) + 10),   // Turbidity range: 10-30 NTU
-                nh3: Number((Math.random() * (5 - 1) + 1).toFixed(2)),    // NH3 range: 1-5 mg/L
-                do: Number((Math.random() * (8 - 5) + 5).toFixed(2)),     // DO range: 5-8 mg/L
-                nutrients: Number((Math.random() * (10 - 1) + 1).toFixed(2)) // Nutrients range: 1-10 mg/L
+                tds: Math.floor(Math.random() * (400 - 200) + 200),       // TDS range: 200-400 mg/L
+                hardness: Number((Math.random() * (150 - 50) + 50).toFixed(2)),   // Hardness range: 50-150 mg/L
+                chloride: Number((Math.random() * (200 - 100) + 100).toFixed(2)), // Chloride range: 100-200 mg/L
+                calcium: Number((Math.random() * (80 - 40) + 40).toFixed(2)),     // Calcium range: 40-80 mg/L
+                phosphorus: Number((Math.random() * (0.5 - 0.1) + 0.1).toFixed(2)), // Phosphorus range: 0.1-0.5 mg/L
+                do: Number((Math.random() * (8 - 5) + 5).toFixed(2))              // DO range: 5-8 mg/L
             }
         });
     }
@@ -90,23 +90,23 @@ function handleParameterUpdate(e) {
         date: new Date().toISOString().split('T')[0],
         influent: {
             ph: document.getElementById('ph-influent').value,
-            bod: document.getElementById('bod-influent').value,
-            cod: document.getElementById('cod-influent').value,
-            tss: document.getElementById('tss-influent').value,
             turbidity: document.getElementById('turbidity-influent').value,
-            nh3: document.getElementById('nh3-influent').value,
-            do: document.getElementById('do-influent').value,
-            nutrients: document.getElementById('nutrients-influent').value
+            tds: document.getElementById('tds-influent').value,
+            hardness: document.getElementById('hardness-influent').value,
+            chloride: document.getElementById('chloride-influent').value,
+            calcium: document.getElementById('calcium-influent').value,
+            phosphorus: document.getElementById('phosphorus-influent').value,
+            do: document.getElementById('do-influent').value
         },
         effluent: {
             ph: document.getElementById('ph-effluent').value,
-            bod: document.getElementById('bod-effluent').value,
-            cod: document.getElementById('cod-effluent').value,
-            tss: document.getElementById('tss-effluent').value,
             turbidity: document.getElementById('turbidity-effluent').value,
-            nh3: document.getElementById('nh3-effluent').value,
-            do: document.getElementById('do-effluent').value,
-            nutrients: document.getElementById('nutrients-effluent').value
+            tds: document.getElementById('tds-effluent').value,
+            hardness: document.getElementById('hardness-effluent').value,
+            chloride: document.getElementById('chloride-effluent').value,
+            calcium: document.getElementById('calcium-effluent').value,
+            phosphorus: document.getElementById('phosphorus-effluent').value,
+            do: document.getElementById('do-effluent').value
         }
     };
     
@@ -160,23 +160,23 @@ function handlePasswordChange(e) {
 }
 
 function updateCurrentParameters(parameters) {
-    document.getElementById('ph-before').textContent = parameters.influent.ph;
-    document.getElementById('bod-before').textContent = parameters.influent.bod;
-    document.getElementById('cod-before').textContent = parameters.influent.cod;
-    document.getElementById('tss-before').textContent = parameters.influent.tss;
-    document.getElementById('turbidity-before').textContent = parameters.influent.turbidity;
-    document.getElementById('nh3-before').textContent = parameters.influent.nh3 ?? '';
+    document.getElementById('ph-before').textContent = parameters.influent.ph ?? '';
+    document.getElementById('turbidity-before').textContent = parameters.influent.turbidity ?? '';
+    document.getElementById('tds-before').textContent = parameters.influent.tds ?? '';
+    document.getElementById('hardness-before').textContent = parameters.influent.hardness ?? '';
+    document.getElementById('chloride-before').textContent = parameters.influent.chloride ?? '';
+    document.getElementById('calcium-before').textContent = parameters.influent.calcium ?? '';
+    document.getElementById('phosphorus-before').textContent = parameters.influent.phosphorus ?? '';
     document.getElementById('do-before').textContent = parameters.influent.do ?? '';
-    document.getElementById('nutrients-before').textContent = parameters.influent.nutrients ?? '';
     
-    document.getElementById('ph-after').textContent = parameters.effluent.ph;
-    document.getElementById('bod-after').textContent = parameters.effluent.bod;
-    document.getElementById('cod-after').textContent = parameters.effluent.cod;
-    document.getElementById('tss-after').textContent = parameters.effluent.tss;
-    document.getElementById('turbidity-after').textContent = parameters.effluent.turbidity;
-    document.getElementById('nh3-after').textContent = parameters.effluent.nh3 ?? '';
+    document.getElementById('ph-after').textContent = parameters.effluent.ph ?? '';
+    document.getElementById('turbidity-after').textContent = parameters.effluent.turbidity ?? '';
+    document.getElementById('tds-after').textContent = parameters.effluent.tds ?? '';
+    document.getElementById('hardness-after').textContent = parameters.effluent.hardness ?? '';
+    document.getElementById('chloride-after').textContent = parameters.effluent.chloride ?? '';
+    document.getElementById('calcium-after').textContent = parameters.effluent.calcium ?? '';
+    document.getElementById('phosphorus-after').textContent = parameters.effluent.phosphorus ?? '';
     document.getElementById('do-after').textContent = parameters.effluent.do ?? '';
-    document.getElementById('nutrients-after').textContent = parameters.effluent.nutrients ?? '';
 }
 
 function loadHistoricalData() {
@@ -190,20 +190,20 @@ function loadHistoricalData() {
             <td>${record.date}</td>
             <td>${record.influent.ph ?? ''}</td>
             <td>${record.effluent.ph ?? ''}</td>
-            <td>${record.influent.bod ?? ''}</td>
-            <td>${record.effluent.bod ?? ''}</td>
-            <td>${record.influent.cod ?? ''}</td>
-            <td>${record.effluent.cod ?? ''}</td>
-            <td>${record.influent.tss ?? ''}</td>
-            <td>${record.effluent.tss ?? ''}</td>
             <td>${record.influent.turbidity ?? ''}</td>
             <td>${record.effluent.turbidity ?? ''}</td>
-            <td>${record.influent.nh3 ?? ''}</td>
-            <td>${record.effluent.nh3 ?? ''}</td>
+            <td>${record.influent.tds ?? ''}</td>
+            <td>${record.effluent.tds ?? ''}</td>
+            <td>${record.influent.hardness ?? ''}</td>
+            <td>${record.effluent.hardness ?? ''}</td>
+            <td>${record.influent.chloride ?? ''}</td>
+            <td>${record.effluent.chloride ?? ''}</td>
+            <td>${record.influent.calcium ?? ''}</td>
+            <td>${record.effluent.calcium ?? ''}</td>
+            <td>${record.influent.phosphorus ?? ''}</td>
+            <td>${record.effluent.phosphorus ?? ''}</td>
             <td>${record.influent.do ?? ''}</td>
             <td>${record.effluent.do ?? ''}</td>
-            <td>${record.influent.nutrients ?? ''}</td>
-            <td>${record.effluent.nutrients ?? ''}</td>
         `;
         tbody.appendChild(row);
     });
@@ -216,13 +216,6 @@ function loadHistoricalData() {
 
 function updateGraph() {
     const history = JSON.parse(localStorage.getItem('parametersHistory'));
-    const ctx = document.getElementById('wastewaterChart').getContext('2d');
-    
-    // Destroy existing chart if it exists
-    if (window.wastewaterChart instanceof Chart) {
-        window.wastewaterChart.destroy();
-    }
-    
     const labels = history.map(record => record.date).reverse();
 
     // Helper to coerce to numbers (empty -> null)
@@ -234,164 +227,196 @@ function updateGraph() {
 
     const color = (r, g, b) => `rgba(${r}, ${g}, ${b}, 1)`;
 
-    const datasets = [
-        // pH
-        {
-            label: 'pH (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.ph)).reverse(),
-            borderColor: color(255, 99, 132),
-            backgroundColor: color(255, 99, 132),
-            tension: 0.2,
-            spanGaps: true
+    const chartOptions = {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+            tooltip: { enabled: true },
+            legend: { position: 'bottom' }
         },
-        {
-            label: 'pH (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.ph)).reverse(),
-            borderColor: color(54, 162, 235),
-            backgroundColor: color(54, 162, 235),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // BOD
-        {
-            label: 'BOD (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.bod)).reverse(),
-            borderColor: color(255, 206, 86),
-            backgroundColor: color(255, 206, 86),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'BOD (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.bod)).reverse(),
-            borderColor: color(75, 192, 192),
-            backgroundColor: color(75, 192, 192),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // COD
-        {
-            label: 'COD (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.cod)).reverse(),
-            borderColor: color(153, 102, 255),
-            backgroundColor: color(153, 102, 255),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'COD (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.cod)).reverse(),
-            borderColor: color(255, 159, 64),
-            backgroundColor: color(255, 159, 64),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // TSS
-        {
-            label: 'TSS (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.tss)).reverse(),
-            borderColor: color(201, 203, 207),
-            backgroundColor: color(201, 203, 207),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'TSS (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.tss)).reverse(),
-            borderColor: color(99, 255, 132),
-            backgroundColor: color(99, 255, 132),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // Turbidity
-        {
-            label: 'Turbidity (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.turbidity)).reverse(),
-            borderColor: color(0, 0, 0),
-            backgroundColor: color(0, 0, 0),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'Turbidity (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.turbidity)).reverse(),
-            borderColor: color(255, 0, 255),
-            backgroundColor: color(255, 0, 255),
-            tension: 0.2,
-            spanGaps: true
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
-        ,
-        // Ammonia (NH3)
-        {
-            label: 'NH3 (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.nh3)).reverse(),
-            borderColor: color(128, 0, 128),
-            backgroundColor: color(128, 0, 128),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'NH3 (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.nh3)).reverse(),
-            borderColor: color(255, 105, 180),
-            backgroundColor: color(255, 105, 180),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // Dissolved Oxygen
-        {
-            label: 'DO (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.do)).reverse(),
-            borderColor: color(0, 128, 255),
-            backgroundColor: color(0, 128, 255),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'DO (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.do)).reverse(),
-            borderColor: color(0, 200, 200),
-            backgroundColor: color(0, 200, 200),
-            tension: 0.2,
-            spanGaps: true
-        },
-        // Nutrients
-        {
-            label: 'Nutrients (Influent)',
-            data: history.map(record => toNumberOrNull(record.influent.nutrients)).reverse(),
-            borderColor: color(100, 100, 0),
-            backgroundColor: color(100, 100, 0),
-            tension: 0.2,
-            spanGaps: true
-        },
-        {
-            label: 'Nutrients (Effluent)',
-            data: history.map(record => toNumberOrNull(record.effluent.nutrients)).reverse(),
-            borderColor: color(200, 200, 0),
-            backgroundColor: color(200, 200, 0),
-            tension: 0.2,
-            spanGaps: true
-        }
-    ];
-    
-    window.wastewaterChart = new Chart(ctx, {
+    };
+
+    // Chart 1: pH Level
+    const phCtx = document.getElementById('phChart').getContext('2d');
+    if (window.phChart instanceof Chart) {
+        window.phChart.destroy();
+    }
+    window.phChart = new Chart(phCtx, {
         type: 'line',
         data: {
             labels: labels,
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            interaction: { mode: 'index', intersect: false },
-            plugins: {
-                tooltip: { enabled: true },
-                legend: { position: 'bottom' }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
+            datasets: [
+                {
+                    label: 'pH (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.ph)).reverse(),
+                    borderColor: color(255, 99, 132),
+                    backgroundColor: color(255, 99, 132),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'pH (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.ph)).reverse(),
+                    borderColor: color(54, 162, 235),
+                    backgroundColor: color(54, 162, 235),
+                    tension: 0.2,
+                    spanGaps: true
                 }
-            }
-        }
+            ]
+        },
+        options: chartOptions
+    });
+
+    // Chart 2: Turbidity
+    const turbidityCtx = document.getElementById('turbidityChart').getContext('2d');
+    if (window.turbidityChart instanceof Chart) {
+        window.turbidityChart.destroy();
+    }
+    window.turbidityChart = new Chart(turbidityCtx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Turbidity (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.turbidity)).reverse(),
+                    borderColor: color(255, 206, 86),
+                    backgroundColor: color(255, 206, 86),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'Turbidity (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.turbidity)).reverse(),
+                    borderColor: color(75, 192, 192),
+                    backgroundColor: color(75, 192, 192),
+                    tension: 0.2,
+                    spanGaps: true
+                }
+            ]
+        },
+        options: chartOptions
+    });
+
+    // Chart 3: Other Parameters (TDS, Hardness, Chloride, Calcium, Phosphorus, DO)
+    const otherParamsCtx = document.getElementById('otherParamsChart').getContext('2d');
+    if (window.otherParamsChart instanceof Chart) {
+        window.otherParamsChart.destroy();
+    }
+    window.otherParamsChart = new Chart(otherParamsCtx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                // TDS
+                {
+                    label: 'TDS (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.tds)).reverse(),
+                    borderColor: color(153, 102, 255),
+                    backgroundColor: color(153, 102, 255),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'TDS (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.tds)).reverse(),
+                    borderColor: color(255, 159, 64),
+                    backgroundColor: color(255, 159, 64),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                // Hardness
+                {
+                    label: 'Hardness (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.hardness)).reverse(),
+                    borderColor: color(201, 203, 207),
+                    backgroundColor: color(201, 203, 207),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'Hardness (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.hardness)).reverse(),
+                    borderColor: color(99, 255, 132),
+                    backgroundColor: color(99, 255, 132),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                // Chloride
+                {
+                    label: 'Chloride (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.chloride)).reverse(),
+                    borderColor: color(0, 0, 0),
+                    backgroundColor: color(0, 0, 0),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'Chloride (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.chloride)).reverse(),
+                    borderColor: color(255, 0, 255),
+                    backgroundColor: color(255, 0, 255),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                // Calcium
+                {
+                    label: 'Calcium (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.calcium)).reverse(),
+                    borderColor: color(128, 0, 128),
+                    backgroundColor: color(128, 0, 128),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'Calcium (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.calcium)).reverse(),
+                    borderColor: color(255, 105, 180),
+                    backgroundColor: color(255, 105, 180),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                // Phosphorus
+                {
+                    label: 'Phosphorus (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.phosphorus)).reverse(),
+                    borderColor: color(0, 128, 255),
+                    backgroundColor: color(0, 128, 255),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'Phosphorus (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.phosphorus)).reverse(),
+                    borderColor: color(0, 200, 200),
+                    backgroundColor: color(0, 200, 200),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                // Dissolved Oxygen
+                {
+                    label: 'DO (Influent)',
+                    data: history.map(record => toNumberOrNull(record.influent.do)).reverse(),
+                    borderColor: color(100, 100, 0),
+                    backgroundColor: color(100, 100, 0),
+                    tension: 0.2,
+                    spanGaps: true
+                },
+                {
+                    label: 'DO (Effluent)',
+                    data: history.map(record => toNumberOrNull(record.effluent.do)).reverse(),
+                    borderColor: color(200, 200, 0),
+                    backgroundColor: color(200, 200, 0),
+                    tension: 0.2,
+                    spanGaps: true
+                }
+            ]
+        },
+        options: chartOptions
     });
 }
